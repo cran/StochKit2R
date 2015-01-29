@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>StochKit2R User Guide</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h3>StochKit2R User Guide</h3>
+
+<p>Kevin R. Sanft
+January 2015</p>
+
+<p>This document provides usage instructions for StochKit2R.</p>
+
+<h2>Introduction</h2>
+
+<p>StochKit2R is an R version of StochKit2.0, a software package for discrete stochastic simulation of biochemical systems using Gillespie’s Stochastic Simulation Algorithm (SSA) and tau-leaping [1-3]. It is designed to support much of the functionality of StochKit2.0. One limitation of StochKit2R is that it does not accept input model files that contain non-mass-action (customized) propensity functions or events (this is due to the platform-specific compilation that is required; this functionality might be added to future versions of StochKit2R).</p>
+
+<p>StochKit2R was written by and is maintained by Kevin R. Sanft (<a href="mailto:kevin@kevinsanft.com">kevin@kevinsanft.com</a>). StochKit2.0 was written by Kevin R. Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Kwei Lim, and others from Professor Linda Petzold&#39;s research group at UC Santa Barbara.</p>
+
+<h2>Citing StochKit2R</h2>
+
+<p>If you use StochKit2R for simulations or analysis used in a publication or presentation, please cite the software. Until a StochKit2R paper is published, please cite the StochKit2 paper:</p>
+
+<blockquote>
+<p>Kevin R. Sanft, Sheng Wu, Min Roh, Jin Fu, Rone Kwei Lim, and Linda R. Petzold.  (2011). StochKit2: software for discrete stochastic simulation of biochemical systems with events. <em>Bioinformatics</em>. <strong>27</strong>(17), pp. 2457-2458.</p>
+</blockquote>
+
+<p>You can also get this information by using the R citation function:</p>
+
+<pre><code class="r">citation(package=&quot;StochKit2R&quot;)
+</code></pre>
+
+<h2>Acknowledgments</h2>
+
+<p>This work was supported by NSF grant DMS-1045015 (through St. Olaf College’s Center for Interdisciplinary Research). I would like to thank Thomas Scott for his work on an early version of this package. I also thank Linda Petzold and her research group from the University of California, Santa Barbara.</p>
+
+<h2>Installation</h2>
+
+<p>As of this writing, I anticipate StochKit2R will soon be available on CRAN, the Comprehensive R Archive Network (<a href="http://cran.r-project.org/">http://cran.r-project.org/</a>). As soon as StochKit2R is available on CRAN, you should be able to install it from the R console:</p>
+
+<pre><code class="r">install.packages(&quot;StochKit2R&quot;)
+</code></pre>
+
+<p>Then load and attach the package with:</p>
+
+<pre><code class="r">library(StochKit2R)
+</code></pre>
+
+<p>Advanced Mac OS X users may want to view the additional instructions below on installation for high performance.</p>
+
+<h3>Installing from source (Mac OS X, Linux/Unix) and Windows binaries</h3>
+
+<p>Note: Installing from source will not install the dependencies. Therefore, you must install the &ldquo;ggplot2&rdquo;, &ldquo;reshape&rdquo;, &ldquo;Rcpp&rdquo;, &ldquo;BH&rdquo;, and &ldquo;XML&rdquo; packages (via install.packages) prior to installing StochKit2R.</p>
+
+<p><strong>Mac OS X and Linux/Unix</strong></p>
+
+<p>To install from source on Mac OS X, you must install XCode and the Command Line Tools before proceeding. Advanced Mac OS X users may want to view the additional instructions below on installation for high performance.</p>
+
+<p>You can install from the source file StochKit2R_&lt;version&gt;.tar.gz, available at <a href="http://www.kevinsanft.com/StochKit2R">http://www.kevinsanft.com/StochKit2R</a>, on Linux and Mac OS X by running the following at a terminal (not the R console) from within the directory of the .tar.gz file:
+R CMD INSTALL StochKit2R_&lt;version&gt;.tar.gz</p>
+
+<p>Or, you can run the following command in the R console:</p>
+
+<pre><code class="r">install.packages(&quot;&lt;path to&gt;/StochKit2R_&lt;version&gt;.tar.gz&quot;,repos=NULL,type=&quot;source&quot;)
+</code></pre>
+
+<p>Where you replace &lt;path to&gt; with the path to the .tar.gz file and &lt;version&gt; is the version number in the .tar.gz file name.</p>
+
+<p><strong>Advanced Mac OS X installation for high performance</strong></p>
+
+<p>As of this writing, the default compiler on recent versions of OS X does not support OpenMP. (The gcc/g++ that comes with XCode&#39;s Command Line Tools is a wrapper for clang/clang++, not <strong>GNU</strong> GCC.) StochKit2R uses OpenMP to run simulations in parallel. Without OpenMP, StochKit2R uses only one processor. Advanced users can follow these instructions to enable parallel ensemble simulations on Mac OS X.</p>
+
+<p>These instructions use <strong>GNU</strong> GCC. I tested it with GNU GCC 4.9. It may be possible to do this with the experimental version of Clang here: <a href="http://clang-omp.github.io/">http://clang-omp.github.io/</a>, but I have not tested it.</p>
+
+<ol>
+<li> Install <strong>GNU</strong> GCC. (XCode&#39;s gcc and g++ are symbolic links to clang and clang++, respectively.) This can probably be done through homebrew, macports, or from source.</li>
+<li> Download StochKit2R_&lt;version&gt;.tar.gz from <a href="http://www.kevinsanft.com/StochKit2R">http://www.kevinsanft.com/StochKit2R</a></li>
+<li> Unpack the StochKit2R .tar.gz file. In the file StochKit2R/src/Makevars, replace the string &ldquo;$(SHLIB_OPENMP_CXXFLAGS)&rdquo; with &ldquo;–fopenmp&rdquo; (two occurrences).</li>
+<li> Create or edit your ~/.R/Makevars file to contain the line:<br/>
+CXX=&lt;path to g++&gt;<br/>
+If an existing CXX line exists, replace it with the above line, where you should replace &lt;path to g++&gt; with the full path to the GNU g++. For example, on my system, it would be:<br/>
+CXX=/usr/local/bin/g++ </li>
+<li> In R, set the working directory to the unpacked StochKit2R directory with the setwd function.</li>
+<li> In R, run devtools::load_all(recompile=T, export_all=F).
+You will need to install the devtools package first, if you haven’t already.</li>
+</ol>
+
+<p>If everything worked correctly, you may see some warning messages but you should see no errors. You should also be able to scroll up to view the compilation commands to confirm that g++ and –fopenmp were used in the compile commands.</p>
+
+<p><strong>Windows</strong></p>
+
+<p>Windows binary packages are available. On Windows, download StochKit2R_&lt;version&gt;.zip from <a href="http://www.kevinsanft.com/StochKit2R">http://www.kevinsanft.com/StochKit2R</a>.</p>
+
+<p>To install the package from .zip file:</p>
+
+<ul>
+<li>In Rgui: under the Packages menu, choose &ldquo;Install package(s) from local zip files&rdquo;. Then locate the .zip file.</li>
+<li>In RStudio: under the Tools menu, choose &ldquo;Package Archive File (.zip, .tar.gz)&rdquo; from the &ldquo;Install from:&rdquo; dropdown menu. Then locate the .zip file, then click Install.</li>
+</ul>
+
+<h2>Running a simulation</h2>
+
+<p>StochKit2R contains three primary simulation functions: ssa, ssaSingle, and tauLeaping.</p>
+
+<p>ssa and tauLeaping run ensembles (multiple simulation trajectories) and output data at regularly spaced intervals. They have nearly identical function calls. Consult the help pages for information. Here are the arguments:</p>
+
+<ul>
+<li>modelFile: the path to the StochKit2 xml model file.</li>
+<li>outputDir: the path to the output directory. If the directory does not exist, it will be created. If the directory already exists, an error will occur unless force=TRUE is specified (see below).</li>
+<li>time: the simulation time. Each simulation will run from 0 to time.</li>
+<li>realizations: number of simulations that will be run.</li>
+<li>intervals: number of intervals between output. The default, 0, specifies that output will be stored only for the simulation end time. 1 indicates output will be stored at time 0 and the end time. 2 indicates output at time 0, the middle of the simulation time and the end time, etc. Note data is stored at (intervals + 1) time points.</li>
+<li>noStats: when set to TRUE, statistics (means and variances) data will not be stored. Default is FALSE. If set to TRUE, keepTrajectories or keepHistograms must be set to TRUE.</li>
+<li>keepTrajectories: when TRUE, trajectory data will be stored. Default is FALSE.</li>
+<li>keepHistograms: when TRUE, historgram data will be stored. Default is FALSE.</li>
+<li>bins: set the number of histogram bins. Default=32.</li>
+<li>force: overwrite existing output. Default=FALSE.</li>
+<li>p: number of processes (threads) to use. With default=0, the number of threads will be determined automatically (recommended). On some architectures, parallelism is not available by default (see section on &ldquo;Advanced Mac OS X installation for high performance&rdquo;).</li>
+<li>epsilon: (tauLeaping only) the error tolerance used for the step size selection procedure. Default=0.03.</li>
+<li>threshold: (tauLeaping only) the minimum number of steps per leap before reverting to the SSA. By default, threshold=10, meaning tauLeaping will temporarily use the SSA direct method if a tau leap step fires fewer than 10 reactions</li>
+</ul>
+
+<p>An example of running the ssa function:</p>
+
+<pre><code class="r"># use the dimer_decay.xml model that is included with StochKit2R
+# to make things easier to read, store the path in a variable
+model &lt;- system.file(&quot;dimer_decay.xml&quot;,package=&quot;StochKit2R&quot;)
+# now, run a simulation:
+ssa(model,&quot;ex_out&quot;,10,100,20)
+</code></pre>
+
+<p>The above function will run 100 simulations to time 10 using 20 output intervals. Output will be stored in a new directory named ex_out which will be created in the current working directory. The above example uses the dimer_decay.xml file included with the StochKit2R distribution. This file is also available for download at <a href="http://www.kevinsanft.com/StochKit2R/dimer_decay.xml">http://www.kevinsanft.com/StochKit2R/dimer_decay.xml</a>.</p>
+
+<p>In the more typical case, the model file will be stored elsewhere in your file system. For example:</p>
+
+<pre><code class="r">ssa(&quot;~/Desktop/dimer_decay.xml&quot;,&quot;~/Desktop/dimer_decay_output&quot;,10,100,20)
+</code></pre>
+
+<p>The file dimer_decay.xml must exist in the ~/Desktop directory. (This corresponds to a machine-specific full path such as &ldquo;/Users/kevinsanft/Desktop/dimer_decay.xml&rdquo;, which might be required on some systems. On Windows, &ldquo;~&rdquo; usually corresponds to the user&#39;s Documents folder, so ~/Desktop would not be a valid path.) Output will be stored in a new directory named dimer_decay_output which will be created in the Desktop directory. If dimer_decay_output already exists, the ssa function will exit with an error saying that the directory already exists. To overwrite an existing directory, use force=TRUE:</p>
+
+<pre><code class="r">ssa(&quot;~/Desktop/dimer_decay.xml&quot;,&quot;~/Desktop/dimer_decay_output&quot;,10,100,20,force=T)
+</code></pre>
+
+<p>By default, the simulation will create an output directory named &ldquo;stats&rdquo; within the outputDir. The stats directory will contain two files: means.txt and variances.txt, containing the means and variances of the species at the output intervals. If keepTrajectories or keepHistograms is TRUE, a directory named trajectories or histograms, respectively, will be created within the output directory.</p>
+
+<p>ssaSingle runs a single trajectory and outputs a row of data for every reaction event that occurs to a file. The function takes as arguments: a path to a StochKit2 .xml model, a path to an output file name, a start time (you will usually use 0 here), and an end time. Here is the example from the documentation, using the dimer_decay.xml model that is included with the StochKit2R package:</p>
+
+<pre><code class="r">ssaSingle(system.file(&quot;dimer_decay.xml&quot;,package=&quot;StochKit2R&quot;),&quot;single_output.txt&quot;,0,10)
+</code></pre>
+
+<p>The above command will run one realization from t=0 to t=10 and write the output to single_output.txt. Note: the file will contain about 25,000 lines, one line for each reaction event (plus one line for the initial population and one line for the end time).</p>
+
+<h2>Plotting</h2>
+
+<p>StochKit2R includes four plotting functions for visualizing simulation output data from ssa and tauLeaping (these are not designed to work with ssaSingle data).</p>
+
+<ul>
+<li>plotStats</li>
+<li>plotTrajectories</li>
+<li>plotHistograms</li>
+<li>histogramDistance</li>
+</ul>
+
+<p>Consult the R function documentation (e.g. ?plotStats) for details. Here an example of the plotStats function, which plots the means and +/- one standard deviation curves.</p>
+
+<pre><code class="r">library(StochKit2R)
+#example using included dimer_decay.xml file
+model &lt;- system.file(&quot;dimer_decay.xml&quot;,package=&quot;StochKit2R&quot;)
+#output written to ex_out directory (created in current working directory)
+ssa(model,&quot;ex_out&quot;,10,100,20,force=TRUE)
+#plot the data for species 2 and 3 (all of them in the dimer decay model)
+plotStats(&quot;ex_out/stats&quot;,c(2,3))
+</code></pre>
+
+<p><img src="http://kevinsanft.com/StochKit2R/plotStats_example.png" alt="plotStats figure available at: http://kevinsanft.com/StochKit2R/plotStats_example.png"/></p>
+
+<p>This example has relatively small variances, so the +/- standard deviation curves are very close to the mean curves.</p>
+
+<h2>Model definition file format</h2>
+
+<p>StochKit2R simulations use models in the StochKit2 xml model definition format. The StochKit2 model definition format uses tags to specify the description of a biochemical model in an xml format.</p>
+
+<p>One sample model file, dimer_decay.xml, is included with the StochKit2R package. You can access it with the R command: system.file(&ldquo;dimer_decay.xml&rdquo;,package=&ldquo;StochKit2R&rdquo;)</p>
+
+<p>To copy this file to a location of your choice, you can use R’s file.copy function. For simplicity, first copy the dimer_decay.xml path into a variable, then call file.copy:</p>
+
+<pre><code class="r">model &lt;- system.file(&quot;dimer_decay.xml&quot;,package=&quot;StochKit2R&quot;)
+file.copy(model,&quot;~/Desktop/dimer_decay.xml&quot;)
+</code></pre>
+
+<p>Again, &ldquo;~/Desktop/dimer_decay.xml&rdquo; must be a valid path; replace the destination with the appropriate path on your system. (On Windows, the dimer_decay.xml file may be difficult to read and edit due in some viewers and editors due to the way Windows handles newlines in text files.)</p>
+
+<p>You can view dimer_decay.xml in a text editor. Here, I will view it in R using the XML package:</p>
+
+<pre><code class="r">model &lt;- system.file(&quot;dimer_decay.xml&quot;,package=&quot;StochKit2R&quot;)
+XML::xmlParse(model)
+</code></pre>
+
+<pre><code>## &lt;?xml version=&quot;1.0&quot;?&gt;
+## &lt;!-- Stochkit 2.0 text input format 
+## 
+## reference:
+## M. Rathinam, L.R. Petzold, Y. Cao, and D.T. Gillespie. J Chem Phys 119, 12784 (2003).
+## --&gt;
+## &lt;Model&gt;
+##   &lt;Description&gt;Dimer Decay&lt;/Description&gt;
+##   &lt;NumberOfReactions&gt;4&lt;/NumberOfReactions&gt;
+##   &lt;NumberOfSpecies&gt;3&lt;/NumberOfSpecies&gt;
+##   &lt;ParametersList&gt;
+##     &lt;Parameter&gt;
+##       &lt;Id&gt;c1&lt;/Id&gt;
+##       &lt;Expression&gt;1.0&lt;/Expression&gt;
+##     &lt;/Parameter&gt;
+##     &lt;Parameter&gt;
+##       &lt;Id&gt;c2&lt;/Id&gt;
+##       &lt;Expression&gt;0.002&lt;/Expression&gt;
+##     &lt;/Parameter&gt;
+##     &lt;Parameter&gt;
+##       &lt;Id&gt;c3&lt;/Id&gt;
+##       &lt;Expression&gt;0.5&lt;/Expression&gt;
+##     &lt;/Parameter&gt;
+##     &lt;Parameter&gt;
+##       &lt;Id&gt;c4&lt;/Id&gt;
+##       &lt;Expression&gt;0.04&lt;/Expression&gt;
+##     &lt;/Parameter&gt;
+##   &lt;/ParametersList&gt;
+##   &lt;ReactionsList&gt;
+##     &lt;Reaction&gt;
+##       &lt;Id&gt;R1&lt;/Id&gt;
+##       &lt;Description&gt; S1 -&amp;gt; null &lt;/Description&gt;
+##       &lt;Type&gt;mass-action&lt;/Type&gt;
+##       &lt;Rate&gt;c1&lt;/Rate&gt;
+##       &lt;Reactants&gt;
+##         &lt;SpeciesReference id=&quot;S1&quot; stoichiometry=&quot;1&quot;/&gt;
+##       &lt;/Reactants&gt;
+##       &lt;Products&gt;
+##        &lt;/Products&gt;
+##       &lt;!-- no product --&gt;
+##     &lt;/Reaction&gt;
+##     &lt;Reaction&gt;
+##       &lt;Id&gt;R2&lt;/Id&gt;
+##       &lt;Description&gt; 2 * S1 -&amp;gt; S2 &lt;/Description&gt;
+##       &lt;Type&gt;mass-action&lt;/Type&gt;
+##       &lt;Rate&gt;c2&lt;/Rate&gt;
+##       &lt;Reactants&gt;
+##         &lt;SpeciesReference id=&quot;S1&quot; stoichiometry=&quot;2&quot;/&gt;
+##       &lt;/Reactants&gt;
+##       &lt;Products&gt;
+##         &lt;SpeciesReference id=&quot;S2&quot; stoichiometry=&quot;1&quot;/&gt;
+##       &lt;/Products&gt;
+##     &lt;/Reaction&gt;
+##     &lt;Reaction&gt;
+##       &lt;Id&gt;R3&lt;/Id&gt;
+##       &lt;Description&gt; S2 -&amp;gt; 2 * S1 &lt;/Description&gt;
+##       &lt;Type&gt;mass-action&lt;/Type&gt;
+##       &lt;Rate&gt;c3&lt;/Rate&gt;
+##       &lt;Reactants&gt;
+##         &lt;SpeciesReference id=&quot;S2&quot; stoichiometry=&quot;1&quot;/&gt;
+##       &lt;/Reactants&gt;
+##       &lt;Products&gt;
+##         &lt;SpeciesReference id=&quot;S1&quot; stoichiometry=&quot;2&quot;/&gt;
+##       &lt;/Products&gt;
+##     &lt;/Reaction&gt;
+##     &lt;Reaction&gt;
+##       &lt;Id&gt;R4&lt;/Id&gt;
+##       &lt;Description&gt; S2 -&amp;gt; S3 &lt;/Description&gt;
+##       &lt;Type&gt;mass-action&lt;/Type&gt;
+##       &lt;Rate&gt;c4&lt;/Rate&gt;
+##       &lt;Reactants&gt;
+##         &lt;SpeciesReference id=&quot;S2&quot; stoichiometry=&quot;1&quot;/&gt;
+##       &lt;/Reactants&gt;
+##       &lt;Products&gt;
+##         &lt;SpeciesReference id=&quot;S3&quot; stoichiometry=&quot;1&quot;/&gt;
+##       &lt;/Products&gt;
+##     &lt;/Reaction&gt;
+##   &lt;/ReactionsList&gt;
+##   &lt;SpeciesList&gt;
+##     &lt;Species&gt;
+##       &lt;Id&gt;S1&lt;/Id&gt;
+##       &lt;Description&gt;Species #1&lt;/Description&gt;
+##       &lt;InitialPopulation&gt;10000&lt;/InitialPopulation&gt;
+##     &lt;/Species&gt;
+##     &lt;Species&gt;
+##       &lt;Id&gt;S2&lt;/Id&gt;
+##       &lt;Description&gt;Species #2&lt;/Description&gt;
+##       &lt;InitialPopulation&gt;0&lt;/InitialPopulation&gt;
+##     &lt;/Species&gt;
+##     &lt;Species&gt;
+##       &lt;Id&gt;S3&lt;/Id&gt;
+##       &lt;Description&gt;Species #3&lt;/Description&gt;
+##       &lt;InitialPopulation&gt;0&lt;/InitialPopulation&gt;
+##     &lt;/Species&gt;
+##   &lt;/SpeciesList&gt;
+## &lt;/Model&gt;
+## 
+</code></pre>
+
+<p>The file might be intimidating at first, but it is quite simple! (Ignore the &ldquo;##&rdquo; preceeding the lines as this is generated by R&#39;s XML package.)</p>
+
+<p>The first tag, &ldquo;&lt;Model&gt;&rdquo; indicates the beginning of the model definition. The closing tag &lt;/Model&gt; at the end indicates the end of the model definition. Most xml tags must be matched by a closing tag. The &lt;NumberOfReactions&gt; and &lt;NumberOfSpecies&gt; tags are required and specify the number of reactions and species, respectively, in the model. The &ldquo;ReactionsList&rdquo; tag encloses one or more (in this case only one) &ldquo;&lt;Reaction&gt;&rdquo; elements. A Reaction must contain an &ldquo;&lt;Id&gt;&rdquo; and a &ldquo;&lt;Type&gt;&rdquo;. In most cases, a Reaction contains a &ldquo;&lt;Reactants&gt;&rdquo; tag and a &ldquo;&lt;Products&gt;&rdquo; tag to specify the reactant and product species, respectively. In StochKit2R, the Reaction Type must be &ldquo;mass-action&rdquo;, and the &ldquo;&lt;Rate&gt;&rdquo; tag is required. The Rate is the stochastic reaction rate that is multiplied by the Reactants’ populations to calculate the propensity [1].</p>
+
+<p>The above model definition file describes a model with 3 species and 4 reactions. Reaction R1 has one SpeciesReference tag within the Reactants and no Products. (Note the SpeciesReference does not use a closing tag, but instead ends the opening tag with &ldquo;/&gt;&rdquo;) Since the stoichiometry of the Reactant is 1 and there are no products, Reaction R1 describes species S1 decaying into &ldquo;nothing&rdquo;.</p>
+
+<p>NOTE: The rate constants in StochKit2 models are interpreted as stochastic rate
+constants (see Gillespie 1977). For enzymatic reactions where a species is both a
+reactant and a product, the species should appear in the Reactants and Products to
+ensure the mass‐action propensity is computed correctly.</p>
+
+<p>The best way to create your own model is to copy and rename an existing model file,
+then open it in a text editor and modify it to suit your needs. Save it with a .xml extension.</p>
+
+<p>The StochKit2 model definition supports (global) parameters as seen in the model above. Instead of putting a numeric value as the Rate, a parameter is used. Parameters are defined within the ParametersList tag.</p>
+
+<p>NOTE: parameters cannot be functions of the species&#39; populations.</p>
+
+<h2>Bugs</h2>
+
+<p>Please report bugs to <a href="mailto:kevin@kevinsanft.com">kevin@kevinsanft.com</a>. Please include a description of the error message, your R version, operating system, StochKit2R version, model file, and steps to recreate the error.</p>
+
+<p>Note: StochKit2R currently does not support customized (non-mass-action) propensity functions or Events, so please do not report this as a bug.</p>
+
+<h2>License</h2>
+
+<p>StochKit2R is released under the GPL-3 (GPLv3) open source license (<a href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a>).</p>
+
+<h2>Copyright</h2>
+
+<p>StochKit2R &copy; 2015, Kevin R. Sanft and Linda R. Petzold.</p>
+
+<h2>Additional resources</h2>
+
+<p>You may also want to consult the StochKit2.0 (i.e. not StochKit2R) manual. StochKit2 can be downloaded from SourceForge.com. StochKit2.0 has some additional features, including being able to use non-mass-action propensity functions and plotting functions for Matlab.</p>
+
+<h2>References</h2>
+
+<ol>
+<li> Gillespie, D.T. J. Phys. Chem. 81, 25, 2340 (1977).</li>
+<li> Gillespie, D.T. J. Chem. Phys. 115, 1716 (2001).</li>
+<li> Cao, Y., Gillespie, D.T., and Petzold, L.R. J. Chem. Phys. 124, 044109 (2006).</li>
+</ol>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+useDynLib(StochKit2R)
+export(ssa,ssaSingle,tauLeaping,plotStats,plotTrajectories,plotHistogram,histogramDistance)
+importFrom(Rcpp, evalCpp)
+import(reshape, ggplot2, XML)

@@ -26,20 +26,20 @@
 ## ----, eval=FALSE--------------------------------------------------------
 #  ssaSingle(system.file("dimer_decay.xml",package="StochKit2R"),"single_output.txt",0,10)
 
-## ----, eval=FALSE--------------------------------------------------------
-#  library(StochKit2R)
-#  #example using included dimer_decay.xml file
-#  model <- system.file("dimer_decay.xml",package="StochKit2R")
-#  #output written to ex_out directory (created in current working directory)
-#  ssa(model,"ex_out",10,100,20,force=TRUE)
-#  #plot the data for species 2 and 3 (all of them in the dimer decay model)
-#  plotStats("ex_out/stats",c(2,3))
+## ----, fig.width=6, fig.height=4, fig.align="center"---------------------
+library(StochKit2R)
+#example using included dimer_decay.xml file
+model <- system.file("dimer_decay.xml",package="StochKit2R")
+#output written to ex_out directory (created in current working directory)
+ssa(model,"ex_out",10,100,20,force=TRUE)
+#plot the data for species 2 and 3 (all of them in the dimer decay model)
+plotStats("ex_out/stats",c(2,3))
 
 ## ----, eval=FALSE--------------------------------------------------------
 #  model <- system.file("dimer_decay.xml",package="StochKit2R")
 #  file.copy(model,"~/Desktop/dimer_decay.xml")
 
-## ------------------------------------------------------------------------
+## ----, comment=""--------------------------------------------------------
 model <- system.file("dimer_decay.xml",package="StochKit2R")
 XML::xmlParse(model)
 

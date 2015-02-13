@@ -1,4 +1,4 @@
-95c9a52fbdf14a22e96bd56495711299 *DESCRIPTION
+7e2ba8c19eb550e27b3984fe7441ca7d *DESCRIPTION
 5b7f7145896b289304c52c5687545f70 *NAMESPACE
 4217d01e2faaf1583860294566b3cf1f *R/RcppExports.R
 07702005a002fc0d6e1f1bac1bddf98f *R/StochKit2R.R
@@ -16,9 +16,9 @@ a57174fc60e5a2e7422ce09a159a1065 *R/processReactionFunctions.R
 b3ddf77bb6dd79f9a30b0c813657cf7b *build/vignette.rds
 b5122830da70030a256c9c971d960844 *inst/CITATION
 ae425bbc9c66c550cba113abacc5023f *inst/dimer_decay.xml
-5df32c2010028c742dc8d656e6b18c18 *inst/doc/StochKit2R-UserGuide.R
-88ff4fd80c4bffaab1921920dfd19369 *inst/doc/StochKit2R-UserGuide.Rmd
-6697ea942441ca4cc2ab40b7b561ce63 *inst/doc/StochKit2R-UserGuide.html
+a9bb67bb61482e0e7717007c762a8021 *inst/doc/StochKit2R-UserGuide.R
+e86be01d3a42098b2b0315912b1a7069 *inst/doc/StochKit2R-UserGuide.Rmd
+a6080637cb117a4614b65be90f62fae5 *inst/doc/StochKit2R-UserGuide.html
 be65407edbec63abd43ac0a05231cf88 *man/StochKit2R.Rd
 8eef6e294748e069cbdd2dd1ad8ae53c *man/histogramDistance.Rd
 4ddfa4cc0bbc4c9e0b2669ce7bc60430 *man/plotHistogram.Rd
@@ -71,4 +71,6 @@ f62f53c51e507b678bc2d7f328196249 *src/solver_helper_functions.h
 6f8149514c7f047bb0244838a8583124 *src/ssaStochKit2RInterface.cpp
 1de0a2a2d086ae30ae36ab9606d4df80 *src/ssaStochKit2Rtemplate.h
 9812a68e4ca8a4465e451c489f2efde4 *src/tauLeapingStochKit2RInterface.cpp
-88ff4fd80c4bffaab1921920dfd19369 *vignettes/StochKit2R-UserGuide.Rmd
+e86be01d3a42098b2b0315912b1a7069 *vignettes/StochKit2R-UserGuide.Rmd
+8bf8d01d11ac505eff774fedebe08a13 *vignettes/ex_out/stats/means.txt
+7b9ab6f3bd534d326c1aa9d815b2afc7 *vignettes/ex_out/stats/variances.txt

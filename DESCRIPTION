@@ -1,8 +1,8 @@
 Package: StochKit2R
 Type: Package
 Title: Efficient Discrete Stochastic Simulation
-Version: 0.2
-Date: 2015-01-29
+Version: 0.3
+Date: 2015-02-13
 Author: Kevin R. Sanft
 Maintainer: Kevin R. Sanft <kevin@kevinsanft.com>
 Copyright: Kevin R. Sanft, Linda R. Petzold
@@ -12,7 +12,7 @@ Imports: Rcpp (>= 0.11.2), reshape, ggplot2, XML
 LinkingTo: Rcpp, BH
 Suggests: knitr
 VignetteBuilder: knitr
-Packaged: 2015-01-29 17:24:12 UTC; kevinsanft
+Packaged: 2015-02-14 22:58:32 UTC; kevinsanft
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2015-01-29 21:39:56
+Date/Publication: 2015-02-17 19:04:43
